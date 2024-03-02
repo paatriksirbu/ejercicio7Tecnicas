@@ -1,0 +1,20 @@
+@startuml
+
+class DadoIA {
+    - caras: int
+    - random: Random
+    - historialResultados: HashMap<Integer, Integer>
+    + lanzarDado(): int
+    + actualizarHistorial(resultado: int): void
+    + predecir(resultado: int): double
+    + mostrarHistorialResultados(): void
+}
+
+class SimuladorDados {
+    + main(args: String[]): void
+    + mostrarHistorialResultados(dado1: DadoIA, dado2: DadoIA, dado3: DadoIA): void
+}
+
+SimuladorDados .down.> DadoIA : uses
+
+@enduml
