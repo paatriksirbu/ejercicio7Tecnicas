@@ -14,6 +14,10 @@ public class DadoIA {
         }
     }
 
+    public int getHistorialResultados(int index) {
+        return historialResultados.get(index);
+    }
+
 
     public int lanzarDado () throws IllegalArgumentException {  //Creamos un metodo que simula el lanzamiento del dado donde las caras solo pueden estar entre 1 y 6.
         int resultado = random.nextInt(caras) + 1;  //Generamos un numero aleatorio entre 1 y el numero de caras del dado
