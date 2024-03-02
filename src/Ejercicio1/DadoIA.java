@@ -24,7 +24,7 @@ public class DadoIA {
         historialResultados.put(resultado, historialResultados.get(resultado) + 1);
     }
 
-    public double predecir(int cara){
+    public double predecir(int cara){   //Para predecir el resultado de un dado, calculamos la probabilidad de que salga una cara en especifico
         int totalLanzamientos = 0;
         for(Integer valor : historialResultados.values()){
             totalLanzamientos += valor;
@@ -36,7 +36,7 @@ public class DadoIA {
         }
     }
 
-    public void mostrarResultados(){
+    public void mostrarHistorialResultados(){   //Mostramos el historial de resultados mostrando la cara y el numero de veces que ha salido
         for (int i = 1; i <= caras; i++) {
             System.out.println("Cara " + i + ": " + historialResultados.get(i));
         }
