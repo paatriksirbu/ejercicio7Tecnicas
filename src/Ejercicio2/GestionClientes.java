@@ -11,14 +11,69 @@ public class GestionClientes {
         String respuesta;
         do {
             clientes.add(crearCliente());
-            System.out.println("¿Desea añadir otro cliente? (s/n)");
+            // Crear libros
+            ArrayList<Libro> libros = crearLibros();
+            System.out.println("Libros disponibles: \n");
+            for (Libro libro : libros) {
+                System.out.println(libro.getTitulo());
+            }
+
+            System.out.println("Introduzca el número de libros que le interesan al cliente: ");
             Scanner sc = new Scanner(System.in);
+            int numLibros = sc.nextInt();
+            sc.nextLine();
+            for (int i = 0; i < numLibros; i++) {
+                System.out.println("Introduzca el título del libro: ");
+                String titulo = sc.nextLine();
+                for (Libro libro : libros) {
+                    if (libro.getTitulo().equals(titulo)) {
+                        clientes.get(clientes.size() - 1).agregarLibroInteresante(libro);
+                    }
+                }
+            }
+            System.out.println("Ha comprado usted alguno de estos libros? (s/n)");
+            respuesta = sc.nextLine();
+            if (respuesta.equals("s")) {
+                System.out.println("Introduzca el número de libros que ha comprado: ");
+                int numLibrosComprados = sc.nextInt();
+                sc.nextLine();
+                for (int i = 0; i < numLibrosComprados; i++) {
+                    System.out.println("Introduzca el título del libro: ");
+                    String titulo = sc.nextLine();
+                    for (Libro libro : libros) {
+                        if (libro.getTitulo().equals(titulo)) {
+                            clientes.get(clientes.size() - 1).agregarLibroComprado(libro);
+                        }
+                    }
+                }
+            }
+
+            System.out.println("Recomendaciones para el cliente: ");
+            ArrayList<Libro> recomendaciones = clientes.get(clientes.size() - 1).ofrecerRecomendaciones(libros, false);
+            for (Libro libro : recomendaciones) {
+                System.out.println(libro.getTitulo());
+            }
+
+            System.out.println("Quiere obtener recomendaciones similares? (s/n)");
+            respuesta = sc.nextLine();
+            boolean incluirSimilares = respuesta.equalsIgnoreCase("s");
+            for (Libro libro : clientes.get(clientes.size() - 1).ofrecerRecomendaciones(libros, incluirSimilares)) {
+                System.out.println(libro.getTitulo());
+            }
+
+
+
+
+            System.out.println("¿Desea añadir otro cliente? (s/n)");
             respuesta = sc.nextLine();
         } while (respuesta.equals("s"));
 
+        System.out.println("Clientes: \n");
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente);
+        }
 
-        // Crear libros
-        ArrayList<Libro> libros = crearLibros();
+
 
 
     }
