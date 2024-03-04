@@ -1,0 +1,39 @@
+
+@startuml
+
+class Cliente {
+  - nombre: String
+  - apellido: String
+  - edad: int
+  - intereses: String[]
+  - librosInteresantes: Libro[]
+  - historialCompras: Libro[]
+  + Cliente(nombre: String, apellido: String, edad: int)
+  + getNombre(): String
+  + getApellido(): String
+  + getEdad(): int
+  + getIntereses(): String[]
+  + getLibrosInteresantes(): Libro[]
+  + getHistorialCompras(): Libro[]
+  + agregarLibroInteresante(Libro): void
+  + agregarLibroComprado(Libro): void
+  + ofrecerRecomendaciones(): Libro[]
+  {static} categoriasSimilares: HashMap<String, String[]>
+}
+
+class Libro {
+  - titulo: String
+  - autor: String
+  - categoria: String
+  + Libro(titulo: String, autor: String, categoria: String)
+  + getTitulo(): String
+  + getAutor(): String
+  + getCategoria(): String
+}
+
+class GestionClientes {
+  + main(args: String[]): void
+}
+
+@enduml
+
