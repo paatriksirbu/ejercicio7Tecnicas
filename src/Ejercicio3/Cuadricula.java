@@ -49,6 +49,8 @@ public class Cuadricula {
 
         if (fila < 0 || fila >= numFilas || columna < 0 || columna >= numColumnas && cuadricula[fila][columna] == 'A') {
             System.out.println("Posición fuera de la cuadricula");
+            fila = (int) (Math.random() * numFilas);
+            columna = (int) (Math.random() * numColumnas);
         } else if (cuadricula[fila][columna] == 'B') {
             System.out.println("Posición ocupada por otro barco");
         } else {
@@ -77,27 +79,26 @@ public class Cuadricula {
         }
 
         int nuevaFila = filaActual, nuevaColumna = columnaActual;
-        switch (direccion) {
-            case 0: //Arriba
-                nuevaFila--;
-                break;
-            case 1: //Derecha
-                nuevaColumna++;
-                break;
-            case 2: //Abajo
-                nuevaFila++;
-                break;
-            case 3: //Izquierda
-                nuevaColumna--;
-                break;
-        }
+        do{
+            switch (direccion) {
+                case 0: //Arriba
+                    nuevaFila--;
+                    break;
+                case 1: //Derecha
+                    nuevaColumna++;
+                    break;
+                case 2: //Abajo
+                    nuevaFila++;
+                    break;
+                case 3: //Izquierda
+                    nuevaColumna--;
+                    break;
+            }
+        } while(nuevaFila < 0 || nuevaFila >= numFilas || nuevaColumna < 0 || nuevaColumna >= numColumnas || cuadricula[nuevaFila][nuevaColumna] != 'A');
 
-        if (nuevaFila >= 0 && nuevaFila < numFilas && nuevaColumna >= 0 && nuevaColumna < numColumnas && cuadricula[nuevaFila][nuevaColumna] == 'A') {
-            cuadricula[filaActual][columnaActual] = 'A';
-            cuadricula[nuevaFila][nuevaColumna] = 'B';
-        } else {
-            System.out.println("No se puede mover el barco en esa dirección");
-        }
+        cuadricula[filaActual][columnaActual] = 'A';
+        cuadricula[nuevaFila][nuevaColumna] = 'B';
+
     }
 
     public boolean disparar(int fila, int columna){

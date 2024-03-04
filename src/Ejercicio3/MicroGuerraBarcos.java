@@ -25,7 +25,12 @@ public class MicroGuerraBarcos {
             int fila = sc.nextInt();
             System.out.println("Introduzca la columna para disparar: ");
             int columna = sc.nextInt();
-            cuadricula.disparar(fila, columna);
+            boolean hundido = cuadricula.disparar(fila, columna);
+
+            if (hundido){
+               System.out.println("¡Has conseguido hundir el barco!");
+               break;
+            }
         }
     }
 }
