@@ -28,3 +28,12 @@ En el main lo que hacemos es crear un tablero, un barco y lo movemos cada 2.5s u
 # 4. Micro Guerra de Barcos con Estategia de IA
 ## Descripción
 
+Este proyecto es igual al anterior, lo que cambia en este es que en este caso, estamos jugando con la maquina tambien, es decir, juega el usuario contra la maquina para ver quien consigue hundir antes el barco.
+
+En este caso, jugamos por turnos hasta que uno de los dos jugadores consigue hundir el barco mediante un disparo. La maquina dispara de forma aleatoria, y el usuario introduce las coordenadas donde quiere disparar.
+
+## Contacto
+
+Patrik Paul Sirbu - https://github.com/paatriksirbu
+
+Enlace del proyecto: [https://github.com/paatriksirbu/ejercicio7Tecnicas.git](https://github.com/paatriksirbu/ejercicio7Tecnicas.git)

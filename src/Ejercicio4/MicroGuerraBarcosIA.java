@@ -29,7 +29,7 @@ public class MicroGuerraBarcosIA {
             Thread.sleep(2500);
 
             System.out.println("Turno del usuario.");
-            System.out.println("Ingresa la fila y columna donde quires disparar.");
+            System.out.println("Ingresa la fila y columna donde quieres disparar.");
             int fila = sc.nextInt();
             int columna = sc.nextInt();
             boolean hundido = barcoComputadora.disparar(fila, columna);
