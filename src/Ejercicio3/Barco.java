@@ -34,7 +34,8 @@ public class Barco implements IntBarco{
     //el barco se podra mover aleatoriamente en cualquier direccion (arriba, abajo, izquierda, derecha), siempre en posiciones adyacentes..
     public void moverBarco(){
         Random random = new Random();
-        int direccion = random.nextInt(4);
+        int direccion;
+
 
         int filaActual = -1, columnaActual = -1;
         for (int i = 0; i < cuadricula.getNumFilas(); i++) {
@@ -49,6 +50,9 @@ public class Barco implements IntBarco{
 
         int nuevaFila = filaActual, nuevaColumna = columnaActual;
         do{
+            direccion = random.nextInt(4);
+            nuevaFila = filaActual;
+            nuevaColumna = columnaActual;
             switch (direccion) {
                 case 0: //Arriba
                     nuevaFila--;
