@@ -1,0 +1,45 @@
+
+@startuml
+
+interface IntBarco {
+  + moverBarco(): void
+  + disparar(fila: int, columna: int): boolean
+}
+
+class Barco implements IntBarco {
+  - tamano: int
+  - estado: boolean
+  - posicion: int[]
+  + Barco(tamano: int, cuadricula: Cuadricula, fila: int, columna: int)
+  + moverBarco(): void
+  + disparar(fila: int, columna: int): boolean
+}
+
+class Cuadricula {
+  - cuadricula: int[][]
+  - numFilas: int
+  - numColumnas: int
+  + Cuadricula()
+  + mostrarTablero(cuadricula: Cuadricula): void
+  + depositarBarco(fila: int, columna: int, barco: Barco): void
+}
+
+class Jugador {
+  - barco: Barco
+  - cuadricula: Cuadricula
+  - ultimaFilaExitosa: int
+  - ultimaColumnaExitosa: int
+  - estaRastreando: boolean
+  + Jugador(barco: Barco, cuadricula: Cuadricula)
+  + disparar(fila: int, columna: int): boolean
+  + getUltimaFilaExitosa(): int
+  + getUltimaColumnaExitosa(): int
+  + estaRastreandoBarco(): boolean
+}
+
+class MicroGuerraBarcosIA {
+  + main(args: String[]): void
+}
+
+@enduml
+
