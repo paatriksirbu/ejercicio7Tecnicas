@@ -11,12 +11,12 @@ public class MicroGuerraBarcos {
 
         //Creamos un barco y lo depositamos en el tablero
         System.out.println("\nTablero con barco");
-        Barco barco = new Barco(3);
+        Barco barco = new Barco(3, cuadricula, 3, 3);
         cuadricula.depositarBarco(3, 3, barco);
         Cuadricula.mostrarTablero(cuadricula);
 
         while(true){    //Bucle que mueve el barco por el tablero simulando que hay corrientes marinas. Se mueve cada 2 segundos.
-            cuadricula.moverBarco(barco);
+            barco.moverBarco();
             Cuadricula.mostrarTablero(cuadricula);
             Thread.sleep(2500);
 
@@ -25,7 +25,7 @@ public class MicroGuerraBarcos {
             int fila = sc.nextInt();
             System.out.println("Introduzca la columna para disparar: ");
             int columna = sc.nextInt();
-            boolean hundido = cuadricula.disparar(fila, columna);
+            boolean hundido = barco.disparar(fila, columna);
 
             if (hundido){
                System.out.println("¡Has conseguido hundir el barco!");

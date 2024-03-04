@@ -7,6 +7,7 @@ public class Cuadricula {
     private char[][] cuadricula;
     private int numFilas = 10;
     private int numColumnas = 10;
+    private Barco barco;
 
     public Cuadricula() {   //Constructor sin argumentos que inicializa la cuadricula con agua por todas partes.
         cuadricula = new char[numFilas][numColumnas];
@@ -15,6 +16,22 @@ public class Cuadricula {
                 cuadricula[i][j] = 'A';
             }
         }
+    }
+    public Cuadricula(Barco barco){
+        this.barco = barco;
+    }
+
+
+    public char[][] getCuadricula() {
+        return cuadricula;
+    }
+
+    public int getNumFilas() {
+        return numFilas;
+    }
+
+    public int getNumColumnas() {
+        return numColumnas;
     }
 
     public static void mostrarTablero(Cuadricula cuadricula) {
@@ -61,61 +78,6 @@ public class Cuadricula {
         }
     }
 
-    //Creamos un metodo que haga que el barco se mueva segun la situacion ambiental. Entendiendo que puede haber viento y corrientes marinas,
-    //el barco se podra mover aleatoriamente en cualquier direccion (arriba, abajo, izquierda, derecha), siempre en posiciones adyacentes..
-    public void moverBarco(Barco barco){
-        Random random = new Random();
-        int direccion = random.nextInt(4);
-
-        int filaActual = -1, columnaActual = -1;
-        for (int i = 0; i < numFilas; i++) {
-            for (int j = 0; j < numColumnas; j++) {
-                if (cuadricula[i][j] == 'B') {
-                    filaActual = i;
-                    columnaActual = j;
-                    break;
-                }
-            }
-        }
-
-        int nuevaFila = filaActual, nuevaColumna = columnaActual;
-        do{
-            switch (direccion) {
-                case 0: //Arriba
-                    nuevaFila--;
-                    break;
-                case 1: //Derecha
-                    nuevaColumna++;
-                    break;
-                case 2: //Abajo
-                    nuevaFila++;
-                    break;
-                case 3: //Izquierda
-                    nuevaColumna--;
-                    break;
-            }
-        } while(nuevaFila < 0 || nuevaFila >= numFilas || nuevaColumna < 0 || nuevaColumna >= numColumnas || cuadricula[nuevaFila][nuevaColumna] != 'A');
-
-        cuadricula[filaActual][columnaActual] = 'A';
-        cuadricula[nuevaFila][nuevaColumna] = 'B';
-
-    }
-
-    public boolean disparar(int fila, int columna){
-        fila--;
-        columna--;
-        if (fila < 0 || fila >= numFilas || columna < 0 || columna >= numColumnas){
-            System.out.println("Posición fuera de la cuadricula");
-            return false;
-        } else if (cuadricula[fila][columna] == 'B') {
-            cuadricula[fila][columna] = 'X';
-            System.out.println("¡Barco hundido!");
-            return true;
-        } else {
-            System.out.println("Disparo fallido");
-            return false;
-        }
-    }
 
 
 }
